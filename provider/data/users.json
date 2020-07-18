@@ -1,0 +1,31 @@
+[
+    {
+        "uuid": "60b7a577-c623-4c03-a902-aa3200bb0e89",
+        "email": "mike@amazon.com",
+        "username": "mike",
+        "password-hash": "{bcrypt}$2a$10$x9.daKE2gi1dZAj.0LNjjOAXMXpnElj6y.2oBfBknS9eoAuQxA4tu",
+        "secret-key": null,
+        "two-fa-status": "DISABLED",
+        "is2fa-activated": false,
+        "enabled": true,
+        "global-administrator": false,
+        "firstName": "mike",
+        "lastName": "tan",
+        "title": null,
+        "department": null,
+        "location": null,
+        "roles": [
+            {
+                "organization": {
+                    "uuid": "e290e5c2-bd43-11ea-882a-cd26553a22fa",
+                    "resource": "ABC"
+                },
+                "application": {
+                    "uuid": "e15dad8d-bd43-11ea-882a-cd26553a22fa",
+                    "resource": "KCP"
+                },
+                "role": "ROLE_KCP_USER"
+            }
+        ]
+    }
+]
