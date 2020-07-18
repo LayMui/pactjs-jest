@@ -22,12 +22,13 @@ describe('Pact Verification', () => {
 
       requestFilter: (req, res, next) => {
         // e.g. ADD Bearer token
-        req.headers["authorization"] = `Bearer ${token}`
+        req.headers["Authorization"] = `Bearer ${token}`
         next()
       },
 
       stateHandlers: {
         "Create a new user": () => {
+          token = "eyJzdWIiOiI1ZWU4MT"
           importData()
           return Promise.resolve(`Users added to the db`)
         },
