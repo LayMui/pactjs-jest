@@ -4,14 +4,22 @@ const { server, importData, userRepository } = require('./provider');
 const port = process.env.PORT || 3000;
 
 
-server.listen(port, () => {
-  importData()
-  console.log(`Listening on port ${port}...`);
-})
+beforeEach((done) => {
+  server.listen(port, (err) => {
+    if (err) return done(err);
+    importData()
+    console.log(`Listening on port ${port}...`);
+    done();
+  })
+});
 
+afterEach((done) => {
+  return  server;
+});
 
 describe('Pact Verification', () => {
-  test('should validate the expectations of our consumer', () => {
+  test('should validate the expectations of our consumer', (done) => {
+    let token = "INVALID TOKEN"
     const opts = {
       provider: 'iProvider',
       providerBaseUrl: `http://localhost:${port}`,
@@ -22,7 +30,8 @@ describe('Pact Verification', () => {
 
       requestFilter: (req, res, next) => {
         // e.g. ADD Bearer token
-        req.headers["Authorization"] = `Bearer ${token}`
+        req.headers['Content-Type'] = 'application/json'
+        req.headers['Authorization'] = `Bearer ${token}`
         next()
       },
 
@@ -37,12 +46,14 @@ describe('Pact Verification', () => {
           Promise.resolve(`Invalid bearer token generated`)
         },
       },
-
     }
   
+    //return new Verifier(opts).verifyProvider();
+    
     return new Verifier(opts).verifyProvider().then(output => {
       console.log("Pact Verification Complete!")
       console.log(output)
+      done();
     })
   })
 })

@@ -161,10 +161,14 @@ https://github.com/pact-foundation/pact-js/tree/master/examples/jest
 Issue:
 ``` FAIL  provider/verify.pact.js
   Pact Verification
-    ✕ should validate the expectations of our consumer (833ms)
+    ✕ should validate the expectations of our consumer (1155ms)
 
   ● Pact Verification › should validate the expectations of our consumer
-  Verifying a pact between iConsumer and iProvider
+
+    INFO: Fetching pacts for iProvider from http://localhost:9292
+    INFO: Reading pact at http://localhost:9292/pacts/provider/iProvider/consumer/iConsumer/version/2.0.0
+
+    Verifying a pact between iConsumer and iProvider
 
       Given Create a new user
         uuid and username
@@ -184,18 +188,48 @@ Issue:
     Failures:
 
       1) Verifying a pact between iConsumer and iProvider Given Create a new user uuid and username with POST /api/uaa/admin/users returns a response which has status code 201
-         Failure/Error: set_up_provider_states interaction.provider_states, options[:consumer]
+         Failure/Error: expect(response_status).to eql expected_response_status
 
-         Pact::ProviderVerifier::SetUpProviderStateError:
-           Error setting up provider state 'Create a new user' for consumer 'iConsumer' at http://localhost:51899/_pactSetup. response status=500 response body=<!DOCTYPE html>
-           <html lang="en">
-           <head>
-           <meta charset="utf-8">
-           <title>Error</title>
-           </head>
-           <body>
-           <pre>ReferenceError: token is not defined<br> &nbsp; &nbsp;at requestFilter (/Users/laymui/dev/taiger/kcp-pact-consumer-test-js/provider/verify
-           Jest did not exit one second after the test run has completed.
+           expected: 201
+                got: 401
 
-            This usually means that there are asynchronous operations that weren't stopped in your tests. Consider running Jest with `--detectOpenHandles` to troubleshoot this issue.
+           (compared using eql?)
+
+      2) Verifying a pact between iConsumer and iProvider Given Create a new user uuid and username with POST /api/uaa/admin/users returns a response which has a matching body
+         Failure/Error: expect(response_body).to match_term expected_response_body, diff_options, example
+
+           Actual: Unauthorized
+
+           Diff
+           --------------------------------------
+           Key: - is expected 
+                + is actual 
+           Matching keys and values are not shown
+
+           -{
+           -  "uuid": "60b7a577-c623-4c03-a902-aa3200bb0e89",
+           -  "email": "mike@amazon.com",
+           -  "username": "mike",
+           -  "firstName": "mike",
+           -  "lastName": "tan",
+           -  "title": null,
+           -  "department": null,
+           -  "location": null,
+           -  "groups": [,
+           -
+           -  ],
+           -  "roles": [,
+           -
+           -  ],
+           -  "organizations": [
+           -    {
+           -      "uuid": "e290e5c2-bd43-11ea-882a-cd26553a22fa",
+           -      "code": "ABC"
+           -    },
+           -  ]
+           -}
+           +Unauthorized
+           
+
+
 ```
