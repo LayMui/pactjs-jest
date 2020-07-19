@@ -12,20 +12,25 @@ server.use(
     extended: true,
   })
 )
+
 server.use((req, res, next) => {
   res.header("Content-Type", "application/json")
   next()
 })
 
+/*
 server.use((req, res, next) => {
+ 
   const token = req.headers["authorization"] 
-
   if (token !== "Bearer eyJzdWIiOiI1ZWU4MT") {
     res.sendStatus(401).send()
   } else {
     next()
   }
+  
+ next()
 })
+*/
 
 const userRepository = new Repository()
 
@@ -47,13 +52,15 @@ server.post("/api/uaa/admin/users", (req, res) => {
   if (!user || !user.username) {
     res.writeHead(400)
     res.end()
-
     return
   }
 
-  userRepository.insert(user)
-
-  res.json(user)
+  console.log('REQ BODY: ' + JSON.stringify(req.body));
+  res.setHeader('Content-Type', 'application/json');
+  res.sendStatus(201).send(JSON.stringify(req.body))
+ 
+  //userRepository.insert(user)
+  //res.json(user)
 })
 
 module.exports = {
