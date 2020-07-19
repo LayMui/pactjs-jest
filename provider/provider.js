@@ -18,7 +18,7 @@ server.use((req, res, next) => {
 })
 
 server.use((req, res, next) => {
-  const token = req.headers["Authorization"] 
+  const token = req.headers["authorization"] 
 
   if (token !== "Bearer eyJzdWIiOiI1ZWU4MT") {
     res.sendStatus(401).send()
@@ -39,23 +39,6 @@ const importData = () => {
   }, 0)
 }
 
-// Get all users
-server.get("/users", (req, res) => {
-  res.json(userlRepository.fetchAll())
-})
-
-
-// Find a user by ID
-server.get("/user/:id", (req, res) => {
-  const response = userRepository.getById(req.params.id)
-  if (response) {
-    res.end(JSON.stringify(response))
-  } else {
-    res.writeHead(404)
-    res.end()
-  }
-})
-
 // Register a new user for the service
 server.post("/api/uaa/admin/users", (req, res) => {
   const user = req.body
@@ -68,7 +51,6 @@ server.post("/api/uaa/admin/users", (req, res) => {
     return
   }
 
-  user.id = userRepository.fetchAll().length
   userRepository.insert(user)
 
   res.json(user)

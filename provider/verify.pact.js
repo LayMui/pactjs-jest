@@ -1,7 +1,7 @@
 const { Verifier } = require('@pact-foundation/pact');
 const { server, importData, userRepository } = require('./provider');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8082;
 
 
 beforeEach((done) => {
@@ -29,7 +29,14 @@ describe('Pact Verification', () => {
       logLevel: 'INFO',
 
       requestFilter: (req, res, next) => {
-        // e.g. ADD Bearer token
+        if (!req.headers["Authorization"]) {
+            next();
+            return;
+        }
+        if (!req.headers["Content-Type"]) {
+          next();
+          return;
+        }
         req.headers['Content-Type'] = 'application/json'
         req.headers['Authorization'] = `Bearer ${token}`
         next()
@@ -48,8 +55,7 @@ describe('Pact Verification', () => {
       },
     }
   
-    //return new Verifier(opts).verifyProvider();
-    
+   
     return new Verifier(opts).verifyProvider().then(output => {
       console.log("Pact Verification Complete!")
       console.log(output)
