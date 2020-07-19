@@ -13,12 +13,12 @@ server.use(
   })
 )
 server.use((req, res, next) => {
-  res.header("Content-Type", "application/json; charset=utf-8")
+  res.header("Content-Type", "application/json")
   next()
 })
 
 server.use((req, res, next) => {
-  const token = req.headers["Authorization"] || ""
+  const token = req.headers["Authorization"] 
 
   if (token !== "Bearer eyJzdWIiOiI1ZWU4MT") {
     res.sendStatus(401).send()
