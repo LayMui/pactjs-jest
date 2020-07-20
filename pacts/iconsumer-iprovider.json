@@ -1,0 +1,95 @@
+{
+  "consumer": {
+    "name": "iConsumer"
+  },
+  "provider": {
+    "name": "iProvider"
+  },
+  "interactions": [
+    {
+      "description": "uuid and username",
+      "providerState": "Create a new user",
+      "request": {
+        "method": "POST",
+        "path": "/api/uaa/admin/users",
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer eyJzdWIiOiI1ZWU4MT"
+        },
+        "body": {
+          "uuid": "60b7a577-c623-4c03-a902-aa3200bb0e89",
+          "email": "mike@amazon.com",
+          "username": "mike",
+          "firstName": "mike",
+          "lastName": "tan",
+          "title": null,
+          "department": null,
+          "location": null,
+          "groups": [
+
+          ],
+          "roles": [
+
+          ],
+          "organizations": [
+            {
+              "uuid": "e290e5c2-bd43-11ea-882a-cd26553a22fa",
+              "code": "ABC"
+            }
+          ]
+        },
+        "matchingRules": {
+          "$.headers.Authorization": {
+            "match": "type"
+          },
+          "$.body": {
+            "match": "type"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer eyJzdWIiOiI1ZWU4MT"
+        },
+        "body": {
+          "uuid": "60b7a577-c623-4c03-a902-aa3200bb0e89",
+          "email": "mike@amazon.com",
+          "username": "mike",
+          "firstName": "mike",
+          "lastName": "tan",
+          "title": null,
+          "department": null,
+          "location": null,
+          "groups": [
+
+          ],
+          "roles": [
+
+          ],
+          "organizations": [
+            {
+              "uuid": "e290e5c2-bd43-11ea-882a-cd26553a22fa",
+              "code": "ABC"
+            }
+          ]
+        },
+        "matchingRules": {
+          "$.headers.Authorization": {
+            "match": "type"
+          },
+          "$.body": {
+            "match": "type"
+          }
+        }
+      },
+      "metadata": null
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}

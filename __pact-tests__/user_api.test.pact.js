@@ -6,7 +6,7 @@ const { like, eachLike } = Matchers;
 describe('user management request', () => {
  // const urlpath = '/api/uaa/admin/users?username=mike&firstName=mike&lastName=tan&password=CukeStudio)123&email=mike@amazon.com&organizations=e290e5c2-bd43-11ea-882a-cd26553a22fa&role=ROLE_KCP_DUMMY'
   const urlpath = '/api/uaa/admin/users'
- 
+
   const getApiEndpoint = () => `http://${global.host}:${global.port}`
   /*
   **  POST /api/uaa/admin/users?username=mike&firstName=mike&lastName=tan&password=CukeStudio)123&email=mike@amazon.com&organizations=e290e5c2-bd43-11ea-882a-cd26553a22fa&role=ROLE_KCP_DUMMY'
@@ -27,14 +27,14 @@ describe('user management request', () => {
       roles: [],
       organizations: [{uuid: "e290e5c2-bd43-11ea-882a-cd26553a22fa", code: "ABC"}]
     };
-    
-    
+
+
     const HEADER = {
       'Content-Type': 'application/json',
-   //   'Authorization': like("Bearer eyJzdWIiOiI1ZWU4MT")
+      'Authorization': like("Bearer eyJzdWIiOiI1ZWU4MT")
     };
 
-   
+
     const BODY = EXPECTED_BODY;
 
     beforeEach(() => {
@@ -57,7 +57,7 @@ describe('user management request', () => {
     });
 
     // add expectations
-    it('returns a successfully body', () => { 
+    it('returns a successfully body', () => {
       return axios.request({
         method: 'POST',
         baseURL: getApiEndpoint(),

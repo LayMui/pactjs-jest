@@ -1,0 +1,153 @@
+I, [2020-07-20T12:19:30.937046 #1459]  INFO -- : Registered expected interaction POST /api/uaa/admin/users
+D, [2020-07-20T12:19:30.937368 #1459] DEBUG -- : {
+  "description": "uuid and username",
+  "providerState": "Create a new user",
+  "request": {
+    "method": "POST",
+    "path": "/api/uaa/admin/users",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "Bearer eyJzdWIiOiI1ZWU4MT"
+      }
+    },
+    "body": {
+      "json_class": "Pact::SomethingLike",
+      "contents": {
+        "uuid": "60b7a577-c623-4c03-a902-aa3200bb0e89",
+        "email": "mike@amazon.com",
+        "username": "mike",
+        "firstName": "mike",
+        "lastName": "tan",
+        "title": null,
+        "department": null,
+        "location": null,
+        "groups": [
+
+        ],
+        "roles": [
+
+        ],
+        "organizations": [
+          {
+            "uuid": "e290e5c2-bd43-11ea-882a-cd26553a22fa",
+            "code": "ABC"
+          }
+        ]
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "Bearer eyJzdWIiOiI1ZWU4MT"
+      }
+    },
+    "body": {
+      "json_class": "Pact::SomethingLike",
+      "contents": {
+        "uuid": "60b7a577-c623-4c03-a902-aa3200bb0e89",
+        "email": "mike@amazon.com",
+        "username": "mike",
+        "firstName": "mike",
+        "lastName": "tan",
+        "title": null,
+        "department": null,
+        "location": null,
+        "groups": [
+
+        ],
+        "roles": [
+
+        ],
+        "organizations": [
+          {
+            "uuid": "e290e5c2-bd43-11ea-882a-cd26553a22fa",
+            "code": "ABC"
+          }
+        ]
+      }
+    }
+  }
+}
+I, [2020-07-20T12:19:30.945050 #1459]  INFO -- : Received request POST /api/uaa/admin/users
+D, [2020-07-20T12:19:30.945184 #1459] DEBUG -- : {
+  "path": "/api/uaa/admin/users",
+  "query": "",
+  "method": "post",
+  "body": {
+    "uuid": "60b7a577-c623-4c03-a902-aa3200bb0e89",
+    "email": "mike@amazon.com",
+    "username": "mike",
+    "firstName": "mike",
+    "lastName": "tan",
+    "title": null,
+    "department": null,
+    "location": null,
+    "groups": [
+
+    ],
+    "roles": [
+
+    ],
+    "organizations": [
+      {
+        "uuid": "e290e5c2-bd43-11ea-882a-cd26553a22fa",
+        "code": "ABC"
+      }
+    ]
+  },
+  "headers": {
+    "Content-Length": "276",
+    "Content-Type": "application/json",
+    "Accept": "application/json, text/plain, */*",
+    "Authorization": "[object Object]",
+    "User-Agent": "axios/0.19.0",
+    "Host": "127.0.0.1:8991",
+    "Connection": "close",
+    "Version": "HTTP/1.1"
+  }
+}
+I, [2020-07-20T12:19:30.945664 #1459]  INFO -- : Found matching response for POST /api/uaa/admin/users
+D, [2020-07-20T12:19:30.945812 #1459] DEBUG -- : {
+  "status": 201,
+  "headers": {
+    "Content-Type": "application/json",
+    "Authorization": {
+      "json_class": "Pact::SomethingLike",
+      "contents": "Bearer eyJzdWIiOiI1ZWU4MT"
+    }
+  },
+  "body": {
+    "json_class": "Pact::SomethingLike",
+    "contents": {
+      "uuid": "60b7a577-c623-4c03-a902-aa3200bb0e89",
+      "email": "mike@amazon.com",
+      "username": "mike",
+      "firstName": "mike",
+      "lastName": "tan",
+      "title": null,
+      "department": null,
+      "location": null,
+      "groups": [
+
+      ],
+      "roles": [
+
+      ],
+      "organizations": [
+        {
+          "uuid": "e290e5c2-bd43-11ea-882a-cd26553a22fa",
+          "code": "ABC"
+        }
+      ]
+    }
+  }
+}
+I, [2020-07-20T12:19:30.952366 #1459]  INFO -- : Verifying - interactions matched
+I, [2020-07-20T12:19:30.955772 #1459]  INFO -- : Cleared interactions
+I, [2020-07-20T12:19:30.959902 #1459]  INFO -- : Updating pact for iProvider at /Users/budi.injo/Documents/work/TL/github/pact-demo-js/pacts/iconsumer-iprovider.json
