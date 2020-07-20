@@ -90,7 +90,7 @@ Test Setup:
             param: {
                 "grant-type": Matchers.like("password"),
                 "password": Matchers.like("pass"),
-                "username": Matchers.like("kcp-admin-taiger"),
+                "username": Matchers.like("admin-xxxx"),
           },
         },
         willRespondWith: {
@@ -159,9 +159,8 @@ https://github.com/pact-foundation/pact-js/tree/master/examples/jest
 
 
 Issue:
-``` FAIL  provider/verify.pact.js
-  Pact Verification
-    ✕ should validate the expectations of our consumer (1155ms)
+``` Pact Verification
+    ✕ should validate the expectations of our consumer (751ms)
 
   ● Pact Verification › should validate the expectations of our consumer
 
@@ -181,8 +180,6 @@ Issue:
               includes headers
 
                 "Content-Type" which equals "application/json" (FAILED - 3)
-
-                "Authorization" which is an instance of String (FAILED - 4)
 
 
     Failures:
@@ -230,6 +227,23 @@ Issue:
            -}
            +Unauthorized
            
+
+           Description of differences
+           --------------------------------------
+           * Expected a Hash (like {"uuid"=>"60b7a577-c623-4c03-a902-aa3200bb0e89", "email"=>"mike@amazon.com", "username"=>"mike", "firstName"=>"mike", "lastName"=>"tan", "title"=>nil, "department"=>nil, "location"=>nil, "groups"=>[], "roles"=>[], "organizations"=>[{"uuid"=>"e290e5c2-bd43-11ea-882a-cd26553a22fa", "code"=>"ABC"}]}) but got a String ("Unauthorized") at $
+
+      3) Verifying a pact between iConsumer and iProvider Given Create a new user uuid and username with POST /api/uaa/admin/users returns a response which includes headers "Content-Type" which equals "application/json"
+         Failure/Error: expect(header_value).to match_header(name, expected_header_value)
+           Expected header "Content-Type" to equal "application/json", but was "text/plain; charset=utf-8"
+
+
+    1 interaction, 1 failure
+
+    Failed interactions:
+
+    * Uuid and username given Create a new user
+
+    INFO: Verification results published to http://localhost:9292/pacts/provider/iProvider/consumer/iConsumer/pact-version/124ddacf320683416ecd13dbacbce2e2eff7d7ac/verification-results/201
 
 
 ```

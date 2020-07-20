@@ -1,4 +1,3 @@
-
 const cors = require("cors")
 const express = require('express')
 const bodyParser = require("body-parser")
@@ -13,24 +12,16 @@ server.use(
   })
 )
 
-server.use((req, res, next) => {
-  res.header("Content-Type", "application/json")
-  next()
-})
 
-/*
 server.use((req, res, next) => {
- 
-  const token = req.headers["authorization"] 
+  const token = req.headers["authorization"]
   if (token !== "Bearer eyJzdWIiOiI1ZWU4MT") {
     res.sendStatus(401).send()
   } else {
     next()
   }
-  
- next()
 })
-*/
+
 
 const userRepository = new Repository()
 
@@ -55,12 +46,12 @@ server.post("/api/uaa/admin/users", (req, res) => {
     return
   }
 
-  console.log('REQ BODY: ' + JSON.stringify(req.body));
+  const authorizationToken = req.headers["authorization"]
+
   res.setHeader('Content-Type', 'application/json');
-  res.sendStatus(201).send(JSON.stringify(req.body))
- 
-  //userRepository.insert(user)
-  //res.json(user)
+  res.setHeader('Authorization', authorizationToken);
+  res.writeHead(201)
+  res.end(JSON.stringify(user));
 })
 
 module.exports = {

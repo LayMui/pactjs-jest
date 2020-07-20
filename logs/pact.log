@@ -1,0 +1,140 @@
+I, [2020-07-20T14:52:03.775962 #45592]  INFO -- : Registered expected interaction POST /api/uaa/admin/users
+D, [2020-07-20T14:52:03.776311 #45592] DEBUG -- : {
+  "description": "uuid and username",
+  "providerState": "Create a new user",
+  "request": {
+    "method": "POST",
+    "path": "/api/uaa/admin/users",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "json_class": "Pact::SomethingLike",
+      "contents": {
+        "uuid": "60b7a577-c623-4c03-a902-aa3200bb0e89",
+        "email": "mike@amazon.com",
+        "username": "mike",
+        "firstName": "mike",
+        "lastName": "tan",
+        "title": null,
+        "department": null,
+        "location": null,
+        "groups": [
+
+        ],
+        "roles": [
+
+        ],
+        "organizations": [
+          {
+            "uuid": "e290e5c2-bd43-11ea-882a-cd26553a22fa",
+            "code": "ABC"
+          }
+        ]
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "json_class": "Pact::SomethingLike",
+      "contents": {
+        "uuid": "60b7a577-c623-4c03-a902-aa3200bb0e89",
+        "email": "mike@amazon.com",
+        "username": "mike",
+        "firstName": "mike",
+        "lastName": "tan",
+        "title": null,
+        "department": null,
+        "location": null,
+        "groups": [
+
+        ],
+        "roles": [
+
+        ],
+        "organizations": [
+          {
+            "uuid": "e290e5c2-bd43-11ea-882a-cd26553a22fa",
+            "code": "ABC"
+          }
+        ]
+      }
+    }
+  }
+}
+I, [2020-07-20T14:52:03.784344 #45592]  INFO -- : Received request POST /api/uaa/admin/users
+D, [2020-07-20T14:52:03.784492 #45592] DEBUG -- : {
+  "path": "/api/uaa/admin/users",
+  "query": "",
+  "method": "post",
+  "body": {
+    "uuid": "60b7a577-c623-4c03-a902-aa3200bb0e89",
+    "email": "mike@amazon.com",
+    "username": "mike",
+    "firstName": "mike",
+    "lastName": "tan",
+    "title": null,
+    "department": null,
+    "location": null,
+    "groups": [
+
+    ],
+    "roles": [
+
+    ],
+    "organizations": [
+      {
+        "uuid": "e290e5c2-bd43-11ea-882a-cd26553a22fa",
+        "code": "ABC"
+      }
+    ]
+  },
+  "headers": {
+    "Content-Length": "276",
+    "Content-Type": "application/json",
+    "Accept": "application/json, text/plain, */*",
+    "User-Agent": "axios/0.19.0",
+    "Host": "127.0.0.1:8991",
+    "Connection": "close",
+    "Version": "HTTP/1.1"
+  }
+}
+I, [2020-07-20T14:52:03.784876 #45592]  INFO -- : Found matching response for POST /api/uaa/admin/users
+D, [2020-07-20T14:52:03.784985 #45592] DEBUG -- : {
+  "status": 201,
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "json_class": "Pact::SomethingLike",
+    "contents": {
+      "uuid": "60b7a577-c623-4c03-a902-aa3200bb0e89",
+      "email": "mike@amazon.com",
+      "username": "mike",
+      "firstName": "mike",
+      "lastName": "tan",
+      "title": null,
+      "department": null,
+      "location": null,
+      "groups": [
+
+      ],
+      "roles": [
+
+      ],
+      "organizations": [
+        {
+          "uuid": "e290e5c2-bd43-11ea-882a-cd26553a22fa",
+          "code": "ABC"
+        }
+      ]
+    }
+  }
+}
+I, [2020-07-20T14:52:03.792116 #45592]  INFO -- : Verifying - interactions matched
+I, [2020-07-20T14:52:03.796090 #45592]  INFO -- : Cleared interactions
+I, [2020-07-20T14:52:03.800964 #45592]  INFO -- : Updating pact for iProvider at /Users/laymui/dev/taiger/pact-demo-js/pacts/iconsumer-iprovider.json

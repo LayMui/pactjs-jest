@@ -6,7 +6,7 @@
   "scripts": {
     "test:pact": "jest cross-env CI=true __pact-tests__/ --runInBand --setupFiles ./pactSetup.js  --setupFilesAfterEnv ./pactTestWrapper.js --testMatch \"**/*.test.pact.js\"",
     "publish:pact": "CI=true node ./publishPacts.js",
-    "verify:pact": "PACT_PUBLISH_RESULTS=true npx jest --testMatch \"**/verify.pact.js\""
+    "verify:pact": "PACT_PUBLISH_RESULTS=true npx jest --detectOpenHandles --testMatch \"**/verify.pact.js\""
   },
   "license": "MIT",
   "jest": {
