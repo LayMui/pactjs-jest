@@ -12,9 +12,9 @@ server.use(
   })
 )
 
-
 server.use((req, res, next) => {
   const token = req.headers["authorization"]
+  console.log("TOKEN: " + token);
   if (token !== "Bearer eyJzdWIiOiI1ZWU4MT") {
     res.sendStatus(401).send()
   } else {

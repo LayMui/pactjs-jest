@@ -13,7 +13,8 @@
         "method": "POST",
         "path": "/api/uaa/admin/users",
         "headers": {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Authorization": "Bearer eyJzdWIiOiI1ZWU4MT"
         },
         "body": {
           "uuid": "60b7a577-c623-4c03-a902-aa3200bb0e89",
@@ -38,6 +39,9 @@
           ]
         },
         "matchingRules": {
+          "$.headers.Authorization": {
+            "match": "type"
+          },
           "$.body": {
             "match": "type"
           }
@@ -46,7 +50,8 @@
       "response": {
         "status": 201,
         "headers": {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Authorization": "Bearer eyJzdWIiOiI1ZWU4MT"
         },
         "body": {
           "uuid": "60b7a577-c623-4c03-a902-aa3200bb0e89",
@@ -71,6 +76,9 @@
           ]
         },
         "matchingRules": {
+          "$.headers.Authorization": {
+            "match": "type"
+          },
           "$.body": {
             "match": "type"
           }

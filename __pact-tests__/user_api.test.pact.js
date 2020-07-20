@@ -31,7 +31,7 @@ describe('user management request', () => {
     
     const HEADER = {
       'Content-Type': 'application/json',
-   //   'Authorization': like("Bearer eyJzdWIiOiI1ZWU4MT")
+      'Authorization': like("Bearer eyJzdWIiOiI1ZWU4MT")
     };
 
    

@@ -1,12 +1,16 @@
-I, [2020-07-20T14:52:03.775962 #45592]  INFO -- : Registered expected interaction POST /api/uaa/admin/users
-D, [2020-07-20T14:52:03.776311 #45592] DEBUG -- : {
+I, [2020-07-20T15:52:47.047000 #46801]  INFO -- : Registered expected interaction POST /api/uaa/admin/users
+D, [2020-07-20T15:52:47.047724 #46801] DEBUG -- : {
   "description": "uuid and username",
   "providerState": "Create a new user",
   "request": {
     "method": "POST",
     "path": "/api/uaa/admin/users",
     "headers": {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "Authorization": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "Bearer eyJzdWIiOiI1ZWU4MT"
+      }
     },
     "body": {
       "json_class": "Pact::SomethingLike",
@@ -37,7 +41,11 @@ D, [2020-07-20T14:52:03.776311 #45592] DEBUG -- : {
   "response": {
     "status": 201,
     "headers": {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "Authorization": {
+        "json_class": "Pact::SomethingLike",
+        "contents": "Bearer eyJzdWIiOiI1ZWU4MT"
+      }
     },
     "body": {
       "json_class": "Pact::SomethingLike",
@@ -66,8 +74,8 @@ D, [2020-07-20T14:52:03.776311 #45592] DEBUG -- : {
     }
   }
 }
-I, [2020-07-20T14:52:03.784344 #45592]  INFO -- : Received request POST /api/uaa/admin/users
-D, [2020-07-20T14:52:03.784492 #45592] DEBUG -- : {
+I, [2020-07-20T15:52:47.055924 #46801]  INFO -- : Received request POST /api/uaa/admin/users
+D, [2020-07-20T15:52:47.056040 #46801] DEBUG -- : {
   "path": "/api/uaa/admin/users",
   "query": "",
   "method": "post",
@@ -97,17 +105,22 @@ D, [2020-07-20T14:52:03.784492 #45592] DEBUG -- : {
     "Content-Length": "276",
     "Content-Type": "application/json",
     "Accept": "application/json, text/plain, */*",
+    "Authorization": "[object Object]",
     "User-Agent": "axios/0.19.0",
     "Host": "127.0.0.1:8991",
     "Connection": "close",
     "Version": "HTTP/1.1"
   }
 }
-I, [2020-07-20T14:52:03.784876 #45592]  INFO -- : Found matching response for POST /api/uaa/admin/users
-D, [2020-07-20T14:52:03.784985 #45592] DEBUG -- : {
+I, [2020-07-20T15:52:47.056372 #46801]  INFO -- : Found matching response for POST /api/uaa/admin/users
+D, [2020-07-20T15:52:47.056486 #46801] DEBUG -- : {
   "status": 201,
   "headers": {
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
+    "Authorization": {
+      "json_class": "Pact::SomethingLike",
+      "contents": "Bearer eyJzdWIiOiI1ZWU4MT"
+    }
   },
   "body": {
     "json_class": "Pact::SomethingLike",
@@ -135,6 +148,11 @@ D, [2020-07-20T14:52:03.784985 #45592] DEBUG -- : {
     }
   }
 }
-I, [2020-07-20T14:52:03.792116 #45592]  INFO -- : Verifying - interactions matched
-I, [2020-07-20T14:52:03.796090 #45592]  INFO -- : Cleared interactions
-I, [2020-07-20T14:52:03.800964 #45592]  INFO -- : Updating pact for iProvider at /Users/laymui/dev/taiger/pact-demo-js/pacts/iconsumer-iprovider.json
+I, [2020-07-20T15:52:47.064264 #46801]  INFO -- : Verifying - interactions matched
+I, [2020-07-20T15:52:47.067935 #46801]  INFO -- : Cleared interactions
+I, [2020-07-20T15:52:47.072206 #46801]  INFO -- : Updating pact for iProvider at /Users/laymui/dev/taiger/pact-demo-js/pacts/iconsumer-iprovider.json
+I, [2020-07-20T15:52:47.072994 #46801]  INFO -- : *****************************************************************************
+I, [2020-07-20T15:52:47.073184 #46801]  INFO -- : Updating existing file ./Users/laymui/dev/taiger/pact-demo-js/pacts/iconsumer-iprovider.json as pactfile_write_mode is :update
+I, [2020-07-20T15:52:47.073512 #46801]  INFO -- : Only interactions defined in this test run will be updated.
+I, [2020-07-20T15:52:47.073584 #46801]  INFO -- : As interactions are identified by description and provider state, pleased note that if either of these have changed, the old interactions won't be removed from the pact file until the specs are next run with :pactfile_write_mode => :overwrite.
+I, [2020-07-20T15:52:47.073645 #46801]  INFO -- : *****************************************************************************
