@@ -36,14 +36,29 @@ const importData = () => {
 }
 
 // Register a new user for the service
-const urlpath = "/api/uaa/admin/users/:username/:firstName/:lastName/:password/:organizations/:role"
-//const urlpath = "/api/uaa/admin/users"
+const urlpath = "/api/uaa/admin/users"
 //?username=mike&firstName=mike&lastName=tan&password=CukeStudio)123&email=mike@amazon.com&organizations=e290e5c2-bd43-11ea-882a-cd26553a22fa&role=ROLE_KCP_DUMMY"
 server.post(urlpath, (req, res) => {
-  const user = req.body
-
-  const username = req.params.username;
-  console.log('USERNAME: ' + username);
+  //const user = req.body
+  const user = {
+    'uuid': '60b7a577-c623-4c03-a902-aa3200bb0e89',
+    'email': req.query.email,
+    'username': req.query.username,
+    'firstName': req.query.firstName,
+    'lastName': req.query.lastName,
+    'password': req.query.password,
+    'title': null,
+    'department': null,
+    'location': null, 
+    'groups': [],
+    'roles': [], 
+    'organizations': [ 
+        {
+          'uuid': req.query.organizations,
+          'code': 'ABC'
+        },
+      ]
+  }
 
   // Really basic validation
   if (!user || !user.username) {
