@@ -1,13 +1,15 @@
 const { Matchers } = require("@pact-foundation/pact")
 const axios = require('axios');
+const { query } = require("express");
 const { like, eachLike } = Matchers;
 
 
 describe('user management request', () => {
- // const urlpath = '/api/uaa/admin/users?username=mike&firstName=mike&lastName=tan&password=CukeStudio)123&email=mike@amazon.com&organizations=e290e5c2-bd43-11ea-882a-cd26553a22fa&role=ROLE_KCP_DUMMY'
-  const urlpath = '/api/uaa/admin/users'
+const expectedUrlpath = '/api/uaa/admin/users?username=mike&firstName=mike&lastName=tan&password=CukeStudio)123&email=mike@amazon.com&organizations=e290e5c2-bd43-11ea-882a-cd26553a22fa&role=ROLE_KCP_DUMMY'
+const urlpath = '/api/uaa/admin/users'
  
-  const getApiEndpoint = () => `http://${global.host}:${global.port}`
+
+const getApiEndpoint = () => `http://${global.host}:${global.port}`
   /*
   **  POST /api/uaa/admin/users?username=mike&firstName=mike&lastName=tan&password=CukeStudio)123&email=mike@amazon.com&organizations=e290e5c2-bd43-11ea-882a-cd26553a22fa&role=ROLE_KCP_DUMMY'
   **  #1 Create a new user
@@ -28,13 +30,21 @@ describe('user management request', () => {
       organizations: [{uuid: "e290e5c2-bd43-11ea-882a-cd26553a22fa", code: "ABC"}]
     };
     
-    
     const HEADER = {
       'Content-Type': 'application/json',
       'Authorization': like("Bearer eyJzdWIiOiI1ZWU4MT")
     };
 
-   
+    const QUERY = {
+        'username': 'mike',
+        'firstName': 'mike', 
+        'lastName': 'tan',
+        'password': 'CukeStudio)123', 
+        'email': 'mike@amazon.com', 
+        'organizations': 'e290e5c2-bd43-11ea-882a-cd26553a22fa', 
+        'role': "ROLE_KCP_DUMMY"
+    }
+
     const BODY = EXPECTED_BODY;
 
     beforeEach(() => {
@@ -44,8 +54,9 @@ describe('user management request', () => {
         withRequest: {
           method: 'POST',
           path: urlpath,
+          query: QUERY, 
           headers: HEADER,
-          body: like(BODY),
+         // body: like(BODY),
         },
         willRespondWith: {
           status: 201,
@@ -61,9 +72,8 @@ describe('user management request', () => {
       return axios.request({
         method: 'POST',
         baseURL: getApiEndpoint(),
-        url: urlpath,
+        url: expectedUrlpath,
         headers: HEADER,
-        data: BODY,
       })
       .then((response) => {
         expect(response.status).toEqual(201);

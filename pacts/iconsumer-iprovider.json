@@ -12,37 +12,13 @@
       "request": {
         "method": "POST",
         "path": "/api/uaa/admin/users",
+        "query": "username=mike&firstName=mike&lastName=tan&password=CukeStudio%29123&email=mike%40amazon.com&organizations=e290e5c2-bd43-11ea-882a-cd26553a22fa&role=ROLE_KCP_DUMMY",
         "headers": {
           "Content-Type": "application/json",
           "Authorization": "Bearer eyJzdWIiOiI1ZWU4MT"
         },
-        "body": {
-          "uuid": "60b7a577-c623-4c03-a902-aa3200bb0e89",
-          "email": "mike@amazon.com",
-          "username": "mike",
-          "firstName": "mike",
-          "lastName": "tan",
-          "title": null,
-          "department": null,
-          "location": null,
-          "groups": [
-
-          ],
-          "roles": [
-
-          ],
-          "organizations": [
-            {
-              "uuid": "e290e5c2-bd43-11ea-882a-cd26553a22fa",
-              "code": "ABC"
-            }
-          ]
-        },
         "matchingRules": {
           "$.headers.Authorization": {
-            "match": "type"
-          },
-          "$.body": {
             "match": "type"
           }
         }
