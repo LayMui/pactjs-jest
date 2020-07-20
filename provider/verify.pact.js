@@ -3,7 +3,6 @@ const { server, importData, userRepository } = require('./provider');
 
 const port = process.env.PORT || 8082;
 
-
 beforeEach((done) => {
   server.listen(port, (err) => {
     if (err) return done(err);
@@ -11,10 +10,6 @@ beforeEach((done) => {
     console.log(`Listening on port ${port}...`);
     done();
   })
-});
-
-afterEach((done) => {
-  return  server;
 });
 
 describe('Pact Verification', () => {
@@ -54,8 +49,7 @@ describe('Pact Verification', () => {
         },
       },
     }
-  
-   
+
     return new Verifier(opts).verifyProvider().then(output => {
       console.log("Pact Verification Complete!")
       console.log(output)
