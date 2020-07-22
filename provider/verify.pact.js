@@ -18,7 +18,7 @@ describe('Pact Verification', () => {
     const opts = {
       provider: 'iProvider',
       providerBaseUrl: `http://localhost:${port}`,
-      pactBrokerUrl: 'http://localhost:9292',
+      pactBrokerUrl: '  pactBroker: "https://pact-broker.azurewebsites.net/',
       publishVerificationResult: true,
       providerVersion: '1.0.0',
       logLevel: 'INFO',
