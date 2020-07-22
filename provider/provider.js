@@ -37,7 +37,6 @@ const importData = () => {
 
 // Register a new user for the service
 const urlpath = "/api/uaa/admin/users"
-//?username=mike&firstName=mike&lastName=tan&password=CukeStudio)123&email=mike@amazon.com&organizations=e290e5c2-bd43-11ea-882a-cd26553a22fa&role=ROLE_KCP_DUMMY"
 server.post(urlpath, (req, res) => {
   //const user = req.body
   const user = {

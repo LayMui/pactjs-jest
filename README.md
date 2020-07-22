@@ -157,93 +157,24 @@ reference:
 https://github.com/DiUS/pact-workshop-js
 https://github.com/pact-foundation/pact-js/tree/master/examples/jest
 
+Deploy pact broker to Azure DevOps CI pipeline:
+```
+I tested this Application for a sample multi-container App Service on my end and everything seems to work fine. Although there are a few changes I needed to do first to successfully run this App:
+Removed the Nginx part in the docker-compose.yml file.
+Added the following Application Setting to the Web App: WEBSITES_WEB_CONTAINER_NAME=pact-broker. You can add these application settings by browsing to the Azure Portal of your Web App and under Configurations > Application Settings, add the key-value pairs mentioned-above.
+I also had a chance to deploy a sample Web App using a single container and used a dedicated MySQL server for the test. This single container application also worked as expected. I created a custom container Web App for this sample and added the following application settings to make it work:
+PACT_BROKER_DATABASE_URL: The format of this setting should be similar to “postgres://user1:pass1@myhost/mydb”, as mentioned in the documentation.
+WEBSITES_PORT: 9292, since the Pact-Broker container listens to this Port by default.
+I understand that you want to use an Azure DevOps pipeline to deploy a Web App for containers and would like to understand how to configure the various release pipeline parameters.
+In case we want to deploy a Web App for Container App Service, we should use the “Azure App Service Deploy” or the “Azure Web App on container Deploy” task, which gives us an option of selecting the App Service Type, for ex., “Web App for Containers (Linux)” and based on the App Type selection it would populate the App Service name dropdown showing only the Apps of the selected type.
+Also, we can specify other parameters in the pipeline, like the Application Settings through the text area under “Application and Configuration Settings”.
+You can find more information and examples regarding these steps in the following links:
+Deploying a Docker based web application to Azure App Service
+Azure App Service Deploy task
+```
 
 Issue:
-``` Pact Verification
-    ✕ should validate the expectations of our consumer (751ms)
-
-  ● Pact Verification › should validate the expectations of our consumer
-
-    INFO: Fetching pacts for iProvider from http://localhost:9292
-    INFO: Reading pact at http://localhost:9292/pacts/provider/iProvider/consumer/iConsumer/version/2.0.0
-
-    Verifying a pact between iConsumer and iProvider
-
-      Given Create a new user
-        uuid and username
-          with POST /api/uaa/admin/users
-            returns a response which
-
-              has status code 201 (FAILED - 1)
-
-              has a matching body (FAILED - 2)
-              includes headers
-
-                "Content-Type" which equals "application/json" (FAILED - 3)
-
-
-    Failures:
-
-      1) Verifying a pact between iConsumer and iProvider Given Create a new user uuid and username with POST /api/uaa/admin/users returns a response which has status code 201
-         Failure/Error: expect(response_status).to eql expected_response_status
-
-           expected: 201
-                got: 401
-
-           (compared using eql?)
-
-      2) Verifying a pact between iConsumer and iProvider Given Create a new user uuid and username with POST /api/uaa/admin/users returns a response which has a matching body
-         Failure/Error: expect(response_body).to match_term expected_response_body, diff_options, example
-
-           Actual: Unauthorized
-
-           Diff
-           --------------------------------------
-           Key: - is expected 
-                + is actual 
-           Matching keys and values are not shown
-
-           -{
-           -  "uuid": "60b7a577-c623-4c03-a902-aa3200bb0e89",
-           -  "email": "mike@amazon.com",
-           -  "username": "mike",
-           -  "firstName": "mike",
-           -  "lastName": "tan",
-           -  "title": null,
-           -  "department": null,
-           -  "location": null,
-           -  "groups": [,
-           -
-           -  ],
-           -  "roles": [,
-           -
-           -  ],
-           -  "organizations": [
-           -    {
-           -      "uuid": "e290e5c2-bd43-11ea-882a-cd26553a22fa",
-           -      "code": "ABC"
-           -    },
-           -  ]
-           -}
-           +Unauthorized
-           
-
-           Description of differences
-           --------------------------------------
-           * Expected a Hash (like {"uuid"=>"60b7a577-c623-4c03-a902-aa3200bb0e89", "email"=>"mike@amazon.com", "username"=>"mike", "firstName"=>"mike", "lastName"=>"tan", "title"=>nil, "department"=>nil, "location"=>nil, "groups"=>[], "roles"=>[], "organizations"=>[{"uuid"=>"e290e5c2-bd43-11ea-882a-cd26553a22fa", "code"=>"ABC"}]}) but got a String ("Unauthorized") at $
-
-      3) Verifying a pact between iConsumer and iProvider Given Create a new user uuid and username with POST /api/uaa/admin/users returns a response which includes headers "Content-Type" which equals "application/json"
-         Failure/Error: expect(header_value).to match_header(name, expected_header_value)
-           Expected header "Content-Type" to equal "application/json", but was "text/plain; charset=utf-8"
-
-
-    1 interaction, 1 failure
-
-    Failed interactions:
-
-    * Uuid and username given Create a new user
-
-    INFO: Verification results published to http://localhost:9292/pacts/provider/iProvider/consumer/iConsumer/pact-version/124ddacf320683416ecd13dbacbce2e2eff7d7ac/verification-results/201
+``` 
 
 
 ```
