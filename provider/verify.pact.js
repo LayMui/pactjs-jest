@@ -3,14 +3,16 @@ const { server, importData, userRepository } = require('./provider');
 
 const port = process.env.PORT || 8082;
 
-beforeEach((done) => {
-  server.listen(port, (err) => {
-    if (err) return done(err);
-    importData()
-    console.log(`Listening on port ${port}...`);
-    done();
-  })
-});
+const serverRunning = server.listen(port);
+
+// beforeEach((done) => {
+//   server.listen(port, (err) => {
+//     if (err) return done(err);
+//     importData()
+//     console.log(`Listening on port ${port}...`);
+//     done();
+//   })
+// });
 
 describe('Pact Verification', () => {
   test('should validate the expectations of our consumer', (done) => {
@@ -50,11 +52,12 @@ describe('Pact Verification', () => {
       },
     }
 
-    //return new Verifier(opts).verifyProvider();
-    return new Verifier(opts).verifyProvider().then(output => {
+     return new Verifier(opts).verifyProvider().then(output => {
       console.log("Pact Verification Complete!")
       console.log(output)
       done();
-    })
+    }).finally(() => {
+      serverRunning.close();
+    });
   })
 })

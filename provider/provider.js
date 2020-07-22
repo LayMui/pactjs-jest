@@ -68,7 +68,6 @@ server.post(urlpath, (req, res) => {
 
   const authorizationToken = req.headers["authorization"]
 
-  
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Authorization', authorizationToken);
   res.writeHead(201)
