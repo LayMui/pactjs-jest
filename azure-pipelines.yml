@@ -10,6 +10,10 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
+- task: UseRubyVersion@0
+  inputs:
+    versionSpec: '>= 2.4'
+
 - task: Bash@3
   inputs:
     targetType: 'inline'
@@ -19,8 +23,8 @@ steps:
       PACT_BROKER_URL: $(PACT_BROKER_URL)
 
 - script: |
-    docker pull pactfoundation/pact-cli
-  displayName: 'docker pull pact broker client image'
+    gem install pact_broker-client
+  displayName: 'install pact broker client'
 
 - script: |
     npm i
