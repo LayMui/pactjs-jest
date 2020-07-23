@@ -9,7 +9,11 @@ steps:
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
-
+- task: Docker@2
+  displayName: Build the pact broker client
+  inputs:
+    repository:  'pactfoundation/pact-cli'
+    command: build
 - task: Bash@3
   inputs:
     targetType: 'inline'
@@ -35,9 +39,9 @@ steps:
   displayName: 'tag latest provider version'
 
 - script: |
-    npm run can:i:deploy:consumer
-  displayName: 'Can I deploy consumer'
-
-- script: |
     npm run create:consumer:tag
   displayName: 'Tag latest consumer version'
+
+- script: |
+    npm run can:i:deploy:consumer
+  displayName: 'Can I deploy consumer'
