@@ -9,11 +9,7 @@ steps:
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
-- task: Docker@2
-  displayName: Build the pact broker client
-  inputs:
-    repository:  'pactfoundation/pact-cli'
-    command: build
+
 - task: Bash@3
   inputs:
     targetType: 'inline'
@@ -21,6 +17,11 @@ steps:
       echo $PACT_BROKER_URL
   env:
       PACT_BROKER_URL: $(PACT_BROKER_URL)
+
+- script: |
+    docker pull pactfoundation/pact-cli
+  displayName: 'docker pull pact broker client image'
+
 - script: |
     npm i
     npm run test:pact
