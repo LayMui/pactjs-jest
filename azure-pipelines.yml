@@ -10,6 +10,13 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo $PACT_BROKER_URL
+  env:
+      PACT_BROKER_URL: $(PACT_BROKER_URL)
 - script: |
     npm i
     npm run test:pact

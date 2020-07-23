@@ -5,15 +5,6 @@ const port = process.env.PORT || 8082;
 
 const serverRunning = server.listen(port);
 
-// beforeEach((done) => {
-//   server.listen(port, (err) => {
-//     if (err) return done(err);
-//     importData()
-//     console.log(`Listening on port ${port}...`);
-//     done();
-//   })
-// });
-
 describe('Pact Verification', () => {
   test('should validate the expectations of our consumer', (done) => {
     let token = "INVALID TOKEN"
