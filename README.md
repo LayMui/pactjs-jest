@@ -175,6 +175,60 @@ Azure App Service Deploy task
 
 Issue:
 ``` 
+Pact Verification
+    ✕ should validate the expectations of our consumer (5016ms)
 
+  ● Pact Verification › should validate the expectations of our consumer
+
+    : Timeout - Async callback was not invoked within the 5000ms timeout specified by jest.setTimeout.Timeout - Async callback was not invoked within the 5000ms timeout specified by jest.setTimeout.Error:
+
+       7 | 
+       8 | describe('Pact Verification', () => {
+    >  9 |   test('should validate the expectations of our consumer', (done) => {
+         |   ^
+      10 |     let token = "INVALID TOKEN"
+      11 |     const opts = {
+      12 |       provider: 'iProvider',
+
+      at new Spec (node_modules/jest-jasmine2/build/jasmine/Spec.js:116:22)
+      at Suite.<anonymous> (provider/verify.pact.js:9:3)
+      at Object.<anonymous> (provider/verify.pact.js:8:1)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 total
+Snapshots:   0 total
+Time:        5.921s
+Ran all test suites.
+
+Jest has detected the following 1 open handle potentially keeping Jest from exiting:
+
+  ●  TCPSERVERWRAP
+
+      4 | const port = process.env.PORT || 8082;
+      5 | 
+    > 6 | const serverRunning = server.listen(port);
+        |                              ^
+      7 | 
+      8 | describe('Pact Verification', () => {
+      9 |   test('should validate the expectations of our consumer', (done) => {
+
+      at Function.listen (node_modules/express/lib/application.js:618:24)
+      at Object.<anonymous> (provider/verify.pact.js:6:30)
+
+[2020-07-24T14:56:13.698Z]  INFO: pact-node@10.2.4/26433 on Lays-MBP: Pact Verification succeeded.
+
+  ●  Cannot log after tests are done. Did you forget to wait for something async in your test?
+    Attempted to log "Pact Verification Complete!".
+
+      45 | 
+      46 |      return new Verifier(opts).verifyProvider().then(output => {
+    > 47 |       console.log("Pact Verification Complete!")
+         |               ^
+      48 |       console.log(output)
+      49 |       done();
+      50 |     }).finally(() => {
+
+      at CustomConsole.log (node_modules/@jest/console/build/CustomConsole.js:183:10)
+      at provider/verify.pact.js:47:15
 
 ```
