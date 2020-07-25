@@ -16,10 +16,10 @@ describe('Pact Verification', () => {
       provider: 'iProvider',
       providerBaseUrl: `http://localhost:${port}`,
       pactBrokerUrl: process.env.PACT_BROKER_URL,
+      pactBrokerToken: process.env.PACT_BROKER_TOKEN,
       publishVerificationResult: true,
       providerVersion: '1.0.0',
       logLevel: 'INFO',
-
       requestFilter: (req, res, next) => {
         if (!req.headers["Authorization"]) {
             next();
