@@ -5,6 +5,10 @@ const port = process.env.PORT || 8082;
 
 const serverRunning = server.listen(port, () => console.log(`Listening on port ${port}...`));
 
+afterAll(async () => {
+  await new Promise(resolve => setTimeout(() => resolve(), 10000)); // avoid jest open handle error
+});
+
 describe('Pact Verification', () => {
   test('should validate the expectations of our consumer', (done) => {
     let token = "INVALID TOKEN"
@@ -50,5 +54,6 @@ describe('Pact Verification', () => {
     }).finally(() => {
       serverRunning.close();
     });
+    
   })
 })
