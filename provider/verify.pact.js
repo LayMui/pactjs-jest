@@ -3,7 +3,7 @@ const { server, importData, userRepository } = require('./provider');
 
 const port = process.env.PORT || 8082;
 
-const serverRunning = server.listen(port);
+const serverRunning = server.listen(port, () => console.log(`Listening on port ${port}...`));
 
 describe('Pact Verification', () => {
   test('should validate the expectations of our consumer', (done) => {
