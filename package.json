@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test:pact": "jest cross-env CI=true __pact-tests__/ --runInBand --setupFiles ./pactSetup.js  --setupFilesAfterEnv ./pactTestWrapper.js --testMatch \"**/*.test.pact.js\"",
-     "publish:pact": "pact-broker publish ./pacts --consumer-app-version 1.0.0 --broker-base-url $PACT_BROKER_URL --broker-token $PACT_BROKER_TOKEN",
+    "publish:pact": "pact-broker publish ./pacts --consumer-app-version 1.0.0 --broker-base-url $PACT_BROKER_URL --broker-token $PACT_BROKER_TOKEN",
     "verify:pact": "PACT_PUBLISH_RESULTS=true npx jest --testTimeout=15000 --detectOpenHandles --testMatch \"**/verify.pact.js\"",
     "create:provider:tag": "pact-broker create-version-tag --pacticipant iProvider --version 1.0.0 --tag staging --broker-base-url $PACT_BROKER_URL",
     "create:consumer:tag": "pact-broker create-version-tag --pacticipant iConsumer --version 1.0.0 --tag staging --broker-base-url $PACT_BROKER_URL",
