@@ -175,6 +175,18 @@ Azure App Service Deploy task
 
 Issue:
 ``` 
-Error making request - OpenSSL::SSL::SSLError SSL_connect returned=1 errno=0 state=SSLv2/v3 read server hello A: unknown protocol , attempt 1 of 3
+let opts = {
+  providerBaseUrl: "http://localhost:8082",
+  pactFilesOrDirs: [path.resolve(process.cwd(), "pacts")],
+  pactBroker: process.env.PACT_BROKER_URL,
+  pactBrokerUrl: process.env.PACT_BROKER_TOKEN,
+  check_for_potential_duplicate_pacticipant_names: "false",
+  consumerVersion:  "2.0.0",
+  //consumerVersion: gitSha,
+  tags: [branch],
+}
+
+  Could not publish pact:
+    No value provided for option '--tag'
 
 ```

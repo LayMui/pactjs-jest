@@ -21,8 +21,22 @@ async function getGitSha() {
   return stdout;
 }
 
-const gitsha = getGitSha();
-console.log('GITSHA: ' + gitsha);
+let gitSha;
+getGitSha().then((gitSha)  => {
+  console.log('GIT SHA:' + gitSha);
+});
+
+async function getBranch() {
+  const { stdout, stderr } = await exec('git rev-parse --abbrev-ref HEAD');
+  console.log('stdout:', stdout);
+  console.error('stderr:', stderr);
+  return stdout;
+}
+
+let branch;
+getBranch().then((branch)  => {
+  console.log('BRANCH:' + branch);
+});
 
 let opts = {
   providerBaseUrl: "http://localhost:8082",
@@ -31,7 +45,7 @@ let opts = {
   pactBrokerUrl: process.env.PACT_BROKER_TOKEN,
   check_for_potential_duplicate_pacticipant_names: "false",
   consumerVersion:  "2.0.0",
- // consumerVersion: gitSha,
+  //consumerVersion: gitSha,
   //tags: [branch],
 }
 
