@@ -175,6 +175,6 @@ Azure App Service Deploy task
 
 Issue:
 ``` 
-rror making request - OpenSSL::SSL::SSLError SSL_connect returned=1 errno=0 state=SSLv2/v3 read server hello A: unknown protocol , attempt 1 of 3
+Error making request - OpenSSL::SSL::SSLError SSL_connect returned=1 errno=0 state=SSLv2/v3 read server hello A: unknown protocol , attempt 1 of 3
 
 ```
