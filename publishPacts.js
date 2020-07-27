@@ -10,22 +10,22 @@ if (process.env.CI !== "true") {
   process.exit(0)
 }
 
-const getBranch = async () => {
-  const { stdout, stderr } = await exec('git rev-parse --abbrev-ref HEAD');
-  return stdout.replace('\n', '');
+function getBranch()  {
+   return new Promise((resolve, reject) => {
+     exec('git rev-parse --abbrev-ref HEAD');
+   });
 }
 
-const getGitShaBranch = async () => {
-  const { stdout, stderr } = await exec('git rev-parse HEAD');
-  getBranch().then((branch) => {
-    console.log('BR: ' + stdout.replace('\n', '') + ' ' + branch);
-    return stdout.replace('\n', '') + ' ' + branch;
-  }).then((combination) => {
-    console.log('COMB: ' + combination);
-    return combination;
-  })
-
+function getGitSha() {
+  return new Promise((resolve, reject)=> {
+    exec('git rev-parse HEAD');
+  });
 }
+
+Promise.all([getBranch, getGitSha]).then(branch, gitsha => {
+  console.log('BR: ' + branch);
+  console.log('GIT: ' + gitsha);
+})
 
 getGitShaBranch().then((gitsha_brname)  => {
     console.log('gitsha_brname: ' + gitsha_brname);
