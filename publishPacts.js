@@ -11,8 +11,6 @@ if (process.env.CI !== "true") {
 }
 
 
-//const gitSha = exec("git rev-parse HEAD")
-//const branch = exec("git rev-parse --abbrev-ref HEAD")
 
 async function getGitSha() {
   const { stdout, stderr } = await exec('git rev-parse HEAD');
@@ -26,6 +24,7 @@ getGitSha().then((gitSha)  => {
   console.log('GIT SHA:' + gitSha);
 });
 
+
 async function getBranch() {
   const { stdout, stderr } = await exec('git rev-parse --abbrev-ref HEAD');
   console.log('stdout:', stdout);
@@ -33,9 +32,9 @@ async function getBranch() {
   return stdout;
 }
 
-let branch;
-getBranch().then((branch)  => {
-  console.log('BRANCH:' + branch);
+getBranch().then((brname)  => {
+  console.log('brname: ' + brname);
+  return brname;
 });
 
 let opts = {
@@ -46,7 +45,7 @@ let opts = {
   check_for_potential_duplicate_pacticipant_names: "false",
   consumerVersion:  "2.0.0",
   //consumerVersion: gitSha,
-  //tags: [branch],
+  tags: [branch],
 }
 
 publisher.publishPacts(opts)
