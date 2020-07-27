@@ -25,10 +25,6 @@ steps:
       PACT_BROKER_TOKEN: $(PACT_BROKER_TOKEN)
 
 - script: |
-    gem install pact_broker-client
-  displayName: 'install pact broker client'
-
-- script: |
     npm i
     npm run test:pact
   displayName: 'run consumer test'
