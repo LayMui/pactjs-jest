@@ -12,37 +12,32 @@ if (process.env.CI !== "true") {
 
 function getBranch()  {
    return new Promise((resolve, reject) => {
-     exec('git rev-parse --abbrev-ref HEAD');
+     resolve(exec('git rev-parse --abbrev-ref HEAD'));
    });
 }
 
 function getGitSha() {
   return new Promise((resolve, reject)=> {
-    exec('git rev-parse HEAD');
+    resolve(exec('git rev-parse HEAD'));
   });
 }
 
-Promise.all([getBranch, getGitSha]).then(branch, gitsha => {
-  console.log('BR: ' + branch);
-  console.log('GIT: ' + gitsha);
+Promise.all([getBranch(), getGitSha()]).then(data => {
+  console.log('Data: ' + JSON.stringify(data));
+  let branch = (data[0].stdout).replace(/\n/g," ");
+  let gitsha = (data[1].stdout).replace(/\n/g," ");;
+  console.log('BRANCH ' + branch);
+  console.log('GITSHA ' + gitsha);
+  let opts = {
+    providerBaseUrl: "http://localhost:8082",
+    pactFilesOrDirs: [path.resolve(process.cwd(), "pacts")],
+    pactBroker: process.env.PACT_BROKER_URL,
+    pactBrokerUrl: process.env.PACT_BROKER_TOKEN,
+    check_for_potential_duplicate_pacticipant_names: "false",
+    consumerVersion:  "2.0.0",
+    consumerVersion: gitsha,
+    tags: branch,
+  }
+
+  publisher.publishPacts(opts)
 })
-
-getGitShaBranch().then((gitsha_brname)  => {
-    console.log('gitsha_brname: ' + gitsha_brname);
-    return gitsha_brname;
-  }).then(gitsha_brname => {
-    let opts = {
-      providerBaseUrl: "http://localhost:8082",
-      pactFilesOrDirs: [path.resolve(process.cwd(), "pacts")],
-      pactBroker: process.env.PACT_BROKER_URL,
-      pactBrokerUrl: process.env.PACT_BROKER_TOKEN,
-      check_for_potential_duplicate_pacticipant_names: "false",
-      consumerVersion:  "2.0.0",
-      //consumerVersion: gitSha,
-      tags: gitsha_brname,
-    }
-  
-    publisher.publishPacts(opts)
-  });
-  
-
