@@ -22,7 +22,7 @@ function getGitSha() {
   });
 }
 
-Promise.all([getBranch(), getGitSha()]).then(data => {
+Promise.all([getBranch().catch(error => { return error}), getGitSha().catch(error => { return error})]).then(data => {
   console.log('Data: ' + JSON.stringify(data));
   let branch = (data[0].stdout).replace(/\n/g," ");
   let gitsha = (data[1].stdout).replace(/\n/g," ");;
@@ -40,4 +40,6 @@ Promise.all([getBranch(), getGitSha()]).then(data => {
   }
 
   publisher.publishPacts(opts)
+}).catch(error => {
+  console.log(error);
 })
