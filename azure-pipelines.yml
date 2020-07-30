@@ -21,8 +21,8 @@ steps:
       echo $PACT_BROKER_URL
       echo $PACT_BROKER_TOKEN
   env:
-      PACT_BROKER_URL: $(PACT_BROKER_URL)
-      PACT_BROKER_TOKEN: $(PACT_BROKER_TOKEN)
+    PACT_BROKER_URL: $(PACT_BROKER_URL)
+    PACT_BROKER_TOKEN: $(PACT_BROKER_TOKEN)
 
 - script: |
     npm i
