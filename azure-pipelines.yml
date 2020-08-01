@@ -12,7 +12,7 @@ steps:
 
 - task: UseRubyVersion@0
   inputs:
-    versionSpec: '>= 2.4'
+    versionSpec: '>= 2.5'
 
 - task: Bash@3
   inputs:
@@ -25,7 +25,6 @@ steps:
     PACT_BROKER_TOKEN: $(PACT_BROKER_TOKEN)
 
 - script: |
-    rm -fr node_modules
     npm i
     npm run test:pact
   displayName: 'run consumer test'
