@@ -33,9 +33,9 @@ steps:
     npm run publish:pact
   displayName: 'consumer publish pact to the pact broker'
 
-- script: |
-    npm run verify:pact
-  displayName: 'provider to verify pact from pact broker'
+# - script: |
+#     npm run verify:pact
+#   displayName: 'provider to verify pact from pact broker'
 
 - script: |
     npm run create:provider:tag
