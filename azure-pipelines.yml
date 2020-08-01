@@ -25,6 +25,7 @@ steps:
     PACT_BROKER_TOKEN: $(PACT_BROKER_TOKEN)
 
 - script: |
+    rm -fr node_modules
     npm i
     npm run test:pact
   displayName: 'run consumer test'
@@ -33,9 +34,9 @@ steps:
     npm run publish:pact
   displayName: 'consumer publish pact to the pact broker'
 
-# - script: |
-#     npm run verify:pact
-#   displayName: 'provider to verify pact from pact broker'
+- script: |
+    npm run verify:pact
+  displayName: 'provider to verify pact from pact broker'
 
 - script: |
     npm run create:provider:tag
