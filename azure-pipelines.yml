@@ -10,10 +10,6 @@ steps:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
-- task: UseRubyVersion@0
-  inputs:
-    versionSpec: '>= 2.5.5'
-
 - task: Bash@3
   inputs:
     targetType: 'inline'
