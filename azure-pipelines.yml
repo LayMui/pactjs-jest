@@ -21,6 +21,10 @@ steps:
     PACT_BROKER_URL: $(PACT_BROKER_URL)
     PACT_BROKER_TOKEN: $(PACT_BROKER_TOKEN)
 
+- task: Bash@3
+  inputs:  
+    script: |
+      env | sort
 - task: CopyFiles@2
   inputs:
       SourceFolder: './'
