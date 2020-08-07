@@ -21,10 +21,10 @@ steps:
     PACT_BROKER_URL: $(PACT_BROKER_URL)
     PACT_BROKER_TOKEN: $(PACT_BROKER_TOKEN)
 
-- task: Bash@3
-  inputs:  
-    script: |
-      env | sort
+- script: |
+    env | sort
+  displayName: 'Run a multi-line script'
+
 - task: CopyFiles@2
   inputs:
       SourceFolder: './'
