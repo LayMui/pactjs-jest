@@ -12,7 +12,8 @@ steps:
 
 - task: Bash@3
   inputs:
-    targetType: 'inline'
+   # targetType: 'inline'
+    filePath: '$(Build.Repository.LocalPath)/test.sh'
     script: |
       echo $PACT_BROKER_URL
       echo $PACT_BROKER_TOKEN
@@ -44,3 +45,6 @@ steps:
 - script: |
     npm run can:i:deploy:consumer
   displayName: 'Can I deploy consumer'
+
+  
+ 
