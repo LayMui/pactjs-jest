@@ -15,11 +15,11 @@ steps:
    # targetType: 'inline'
     filePath: '$(Build.Repository.LocalPath)/test.sh'
     script: |
-      echo $PACT_BROKER_URL
-      echo $PACT_BROKER_TOKEN
+      echo $PACTBROKERURL
+      echo $PACTBROKERTOKEN
   env:
-    PACT_BROKER_URL: $(PACT_BROKER_URL)
-    PACT_BROKER_TOKEN: $(PACT_BROKER_TOKEN)
+    PACTBROKERURL: $(PACTBROKERURL)
+    PACTBROKERTOKEN: $(PACTBROKERTOKEN)
 
 - task: CopyFiles@2
   inputs:

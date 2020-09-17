@@ -15,8 +15,8 @@ describe('Pact Verification', () => {
     const opts = {
       provider: 'iProvider',
       providerBaseUrl: `http://localhost:${port}`,
-      pactBrokerUrl: process.env.PACT_BROKER_URL,
-      pactBrokerToken: process.env.PACT_BROKER_TOKEN,
+      pactBrokerUrl: process.env.PACTBROKERURL,
+      pactBrokerToken: process.env.PACTBROKERTOKEN,
       publishVerificationResult: true,
       providerVersion: '1.0.0',
       logLevel: 'INFO',
