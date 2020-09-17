@@ -1,6 +1,9 @@
 trigger:
 - master
 
+variables:
+- group: pact-demo-variables
+
 pool:
   vmImage: 'ubuntu-latest'
 
@@ -18,8 +21,13 @@ steps:
       echo $PACTBROKERURL
       echo $PACTBROKERTOKEN
   env:
+
     PACTBROKERURL: $(PACTBROKERURL)
     PACTBROKERTOKEN: $(PACTBROKERTOKEN)
+
+- script: |
+    env | sort
+  displayName: 'Run a multi-line script'
 
 - task: CopyFiles@2
   inputs:
