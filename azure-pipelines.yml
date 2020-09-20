@@ -54,17 +54,17 @@ steps:
     npm run verify:pact
   displayName: 'provider to verify pact from pact broker'
 
-- script: |
-    npm run create:provider:tag
-  displayName: 'tag latest provider version'
+# - script: |
+#     npm run create:provider:tag
+#   displayName: 'tag latest provider version'
 
-- script: |
-    npm run create:consumer:tag
-  displayName: 'Tag latest consumer version'
+# - script: |
+#     npm run create:consumer:tag
+#   displayName: 'Tag latest consumer version'
 
-- script: |
-    npm run can:i:deploy:consumer
-  displayName: 'Can I deploy consumer'
+# - script: |
+#     npm run can:i:deploy:consumer
+#   displayName: 'Can I deploy consumer'
 
   
  
