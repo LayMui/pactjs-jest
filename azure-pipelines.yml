@@ -19,10 +19,12 @@ steps:
     filePath: '$(Build.Repository.LocalPath)/test.sh'
     script: |
       echo $PACTBROKERURL
+      echo $PACTBROKER
       echo $PACTBROKERTOKEN
   env:
 
     PACTBROKERURL: $(PACTBROKERURL)
+    PACTBROKER: $(PACTBROKER)
     PACTBROKERTOKEN: $(PACTBROKERTOKEN)
 
 - script: |
