@@ -2,4 +2,5 @@
 
 # This is a comment!
 
-echo $PACT_BROKER_TOKEN >> ./test101.txt
+echo $PACTBROKERTOKEN >> ./test101.txt
+echo $PACTBROKER >> ./test101.txt
