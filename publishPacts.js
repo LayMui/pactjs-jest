@@ -32,7 +32,7 @@ Promise.all([getBranch().catch(error => { return error}), getGitSha().catch(erro
     providerBaseUrl: "http://localhost:8082",
     pactFilesOrDirs: [path.resolve(process.cwd(), "pacts")],
     pactBroker: process.env.PACTBROKERURL,
-    //pactBrokerUrl: process.env.PACTBROKERURL,
+    pactBrokerUrl: process.env.PACTBROKERURL,
     pactBrokerToken: process.env.PACTBROKERTOKEN,
     check_for_potential_duplicate_pacticipant_names: "false",
     consumerVersion:  "2.0.0",
