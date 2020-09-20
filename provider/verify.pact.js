@@ -20,7 +20,7 @@ describe('Pact Verification', () => {
       pactBrokerToken: process.env.PACTBROKERTOKEN,
       publishVerificationResult: true,
       providerVersion: '1.0.0',
-      logLevel: 'INFO',
+      logLevel: 'DEBUG',
       requestFilter: (req, res, next) => {
         if (!req.headers["Authorization"]) {
             next();
