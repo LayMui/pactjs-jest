@@ -15,14 +15,12 @@ steps:
 
 - task: Bash@3
   inputs:
-   # targetType: 'inline'
-    filePath: '$(Build.Repository.LocalPath)/test.sh'
+    targetType: 'inline'
     script: |
       echo $PACTBROKERURL
       echo $PACTBROKER
       echo $PACTBROKERTOKEN
   env:
-
     PACTBROKERURL: $(PACTBROKERURL)
     PACTBROKER: $(PACTBROKER)
     PACTBROKERTOKEN: $(PACTBROKERTOKEN)
