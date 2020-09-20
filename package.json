@@ -7,9 +7,9 @@
     "test:pact": "jest cross-env CI=true __pact-tests__/ --runInBand --setupFiles ./pactSetup.js  --setupFilesAfterEnv ./pactTestWrapper.js --testMatch \"**/*.test.pact.js\"",
     "publish:pact": "CI=true node ./publishPacts.js",
     "verify:pact": "PACT_PUBLISH_RESULTS=true npx jest --testTimeout=15000 --detectOpenHandles --testMatch \"**/verify.pact.js\"",
-    "create:provider:tag": "npx pact-broker create-version-tag --pacticipant iProvider --version 1.0.0 --tag staging --broker-base-url $PACTBROKERURL",
-    "create:consumer:tag": "npx pact-broker create-version-tag --pacticipant iConsumer --version 1.0.0 --tag staging --broker-base-url $PACTBROKERURL",
-    "can:i:deploy:consumer": "npx pact-broker can-i-deploy --pacticipant iConsumer --version 1.0.0 --pacticipant iProvider --latest staging --broker-base-url $PACTBROKERURL"
+    "create:provider:tag": "npx pact-broker create-version-tag --pacticipant iProvider --version 1.0.0 --tag staging",
+    "create:consumer:tag": "npx pact-broker create-version-tag --pacticipant iConsumer --version 1.0.0 --tag staging",
+    "can:i:deploy:consumer": "npx pact-broker can-i-deploy --pacticipant iConsumer --version 1.0.0 --pacticipant iProvider --latest staging"
   },
   "license": "MIT",
   "jest": {
