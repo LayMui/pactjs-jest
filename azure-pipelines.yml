@@ -20,12 +20,12 @@ steps:
       echo $PACTBROKERURL
       echo $PACTBROKER
       echo $PACTBROKERTOKEN
-      echo $TOKEN
+      echo $PACTTOKEN
   env:
     PACTBROKERURL: $(PACTBROKERURL)
     PACTBROKER: $(PACTBROKER)
     PACTBROKERTOKEN: $(PACTBROKERTOKEN)
-    NAME: $(TOKEN)
+    NAME: $(PACTTOKEN)
 
 - script: |
     env | sort
