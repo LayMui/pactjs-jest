@@ -1,8 +1,8 @@
 trigger:
 - master
 
-variables:
-- group: pact-demo-variables
+# variables:
+# - group: pact-demo-variables
 
 pool:
   vmImage: 'ubuntu-latest'
