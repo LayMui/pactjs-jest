@@ -17,15 +17,13 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      echo $PACTBROKERURL
       echo $PACTBROKER
+      echo $PACTBROKERURL
       echo $PACTBROKERTOKEN
-      echo $TOKEN
   env:
-    PACTBROKERURL: $(PACTBROKERURL)
     PACTBROKER: $(PACTBROKER)
+    PACTBROKERURL: $(PACTBROKERURL)
     PACTBROKERTOKEN: $(PACTBROKERTOKEN)
-    TOKEN: $(TOKEN)
  
 - script: |
     env | sort
@@ -47,14 +45,20 @@ steps:
     npm i
     npm run test:pact
   displayName: 'run consumer test'
+  env:
+    PACTBROKERTOKEN: $(PACTBROKERTOKEN)
 
 - script: |
     npm run publish:pact
   displayName: 'consumer publish pact to the pact broker'
+  env:
+    PACTBROKERTOKEN: $(PACTBROKERTOKEN)
 
 - script: |
     npm run verify:pact
   displayName: 'provider to verify pact from pact broker'
+  env:
+    PACTBROKERTOKEN: $(PACTBROKERTOKEN)
 
 # - script: |
 #     npm run create:provider:tag
