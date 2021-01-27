@@ -27,13 +27,14 @@ steps:
  
 - script: |
     env | sort
+  displayName: 'Run a multi-line script'
+
 - task: SonarCloudPrepare@1
   inputs:
     SonarCloud: 'sonarcloud'
     organization: 'muiume'
     scannerMode: 'CLI'
     configMode: 'file'
-  displayName: 'Run a multi-line script'
 - task: SonarCloudAnalyze@1
 
 - task: SonarCloudPublish@1
