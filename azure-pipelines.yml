@@ -29,17 +29,9 @@ steps:
     env | sort
   displayName: 'Run a multi-line script'
 
-# - task: SonarCloudPrepare@1
-#   inputs:
-#     SonarCloud: 'sonarcloud'
-#     organization: 'muiume'
-#     scannerMode: 'CLI'
-#     configMode: 'file'
-# - task: SonarCloudAnalyze@1
-
-# - task: SonarCloudPublish@1
-#   inputs:
-#     pollingTimeoutSec: '300'
+- task: WhiteSource@21
+  inputs:
+    cwd: '$(System.DefaultWorkingDirectory)'
 - task: CopyFiles@2
   inputs:
       SourceFolder: './'
