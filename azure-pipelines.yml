@@ -29,9 +29,18 @@ steps:
     env | sort
   displayName: 'Run a multi-line script'
 
-- task: WhiteSource@21
+- task: Veracode@3
   inputs:
-    cwd: '$(System.DefaultWorkingDirectory)'
+    ConnectionDetailsSelection: 'Endpoint'
+    veracodeAppProfile: '$(system.teamProject)'
+    version: '$(build.buildNumber)'
+    filepath: '$(build.artifactstagingdirectory)'
+    createSandBox: false
+    createProfile: false
+    failTheBuildIfVeracodeScanDidNotInitiate: false
+    scanStatusCheckInterval: '60'
+    importResults: false
+    failBuildOnPolicyFail: false
 - task: CopyFiles@2
   inputs:
       SourceFolder: './'
