@@ -32,7 +32,6 @@ steps:
 - task: WhiteSource@21
   inputs:
     cwd: '$(System.DefaultWorkingDirectory)'
-  
 - task: CopyFiles@2
   inputs:
       SourceFolder: './'
