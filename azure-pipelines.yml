@@ -32,6 +32,7 @@ steps:
 - task: WhiteSource@21
   inputs:
     cwd: '$(System.DefaultWorkingDirectory)'
+    projectName: 'pact-demo-js'
 - task: CopyFiles@2
   inputs:
       SourceFolder: './'
