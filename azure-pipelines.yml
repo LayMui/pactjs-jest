@@ -29,7 +29,7 @@ steps:
     env | sort
   displayName: 'Run a multi-line script'
 
-- task: WhiteSource@21
+- task: whitesource.whiteSource-bolt-v2.bolt.wss.WhiteSource, whitesource.WhiteSource-azure-devops-services.bolt.wss.WhiteSource@21
   inputs:
     cwd: '$(System.DefaultWorkingDirectory)'
     projectName: 'pact-demo-js'
