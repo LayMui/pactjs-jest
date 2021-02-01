@@ -29,9 +29,10 @@ steps:
     env | sort
   displayName: 'Run a multi-line script'
 
-- task: WhiteSource@20
+- task: WhiteSource@21
   inputs:
     cwd: '$(System.DefaultWorkingDirectory)'
+  
 - task: CopyFiles@2
   inputs:
       SourceFolder: './'
