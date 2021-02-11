@@ -29,6 +29,7 @@ steps:
     env | sort
   displayName: 'Run a multi-line script'
 
+
 - task: CopyFiles@2
   inputs:
       SourceFolder: './'
