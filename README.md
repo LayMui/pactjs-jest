@@ -5,6 +5,33 @@
 # Start the Pact Broker 
 git clone https://github.com/pact-foundation/pact-broker-docker
 Run to start the pact broker running at localhost:9292
+
+Pre-requisite:
+```
+# Install postgresql
+brew install postgres
+
+# Start the postgres service
+brew service start postgresql
+
+# Connect to postgresql to config
+psql postgres
+
+CREATE DATABASE pact_broker;
+CREATE ROLE pact_broker WITH LOGIN PASSWORD 'password';
+GRANT ALL PRIVILEGES ON DATABASE pact_broker TO pact_broker;
+```
+
+reference:
+https://github.com/pact-foundation/pact-broker-docker
+
+Run to start the pact broker running at localhost:9292
+```
+docker-compose up -d
+```
+
+Go to localhost:9292 to see the pact broker running in the browser
+
 ```
 docker-compose up
 ```
